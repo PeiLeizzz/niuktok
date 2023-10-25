@@ -5,5 +5,5 @@
     path = niuktok-backend
     url = https://github.com/PeiLeizzz/niuktok-backend
 [submodule "niuktok-frontend"]
-    path = qiniu-media-frontend
-    url = https://github.com/GfromYH/qiniu-media-frontend
+	path = niuktok-frontend
+	url = https://github.com/GfromYH/niuktok-frontend
