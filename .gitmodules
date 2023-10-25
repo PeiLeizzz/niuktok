@@ -1,0 +1,9 @@
+[submodule "niuktok-middleware"]
+    path = niuktok-middleware
+    url = https://github.com/PeiLeizzz/niuktok-middleware
+[submodule "niuktok-backend"]
+    path = niuktok-backend
+    url = https://github.com/PeiLeizzz/niuktok-backend
+[submodule "niuktok-frontend"]
+    path = qiniu-media-frontend
+    url = https://github.com/GfromYH/qiniu-media-frontend
