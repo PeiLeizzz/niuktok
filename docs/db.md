@@ -21,7 +21,7 @@
 |    status    | unsigned tinyint(2) |        |    √     | USER_STATUS_NORMAL |             |             |    用户状态（正常、封禁等）（可选）    |
 |     ...      |                     |        |          |                    |             |             | 生日、签名、注册时间等其他信息（可选） |
 
-- 粉丝数量可以定时异步更新
+- 关注、粉丝数量可以定时异步更新
 
 ## user_follow
 
@@ -79,7 +79,7 @@
 
 - `unique index(tag_id, video_id)`
 
-##user_video_view
+## user_video_view
 
 |    Column     |       Type       | Unique | Not Null | Default | Foreign Key | Primary Key |              note              |
 | :-----------: | :--------------: | :----: | :------: | :-----: | :---------: | :---------: | :----------------------------: |
@@ -91,7 +91,7 @@
 
 - `unique index(user_id, video_id)`
 
-##user_video_favorite
+## user_video_favorite
 
 |  Column  |       Type       | Unique | Not Null | Default | Foreign Key | Primary Key | note |
 | :------: | :--------------: | :----: | :------: | :-----: | :---------: | :---------: | :--: |
@@ -134,12 +134,15 @@
 |  user_id   | unsigned int(11) |        |    √     |         |   user.id   |             |      |
 | comment_id | unsigned int(11) |        |    √     |         | comment.id  |             |      |
 
+- `unique index(user_id, comment_id)`
+
 ## message
 
-|    Column    |        Type         | Unique | Not Null | Default | Foreign Key | Primary Key |                           note                           |
-| :----------: | :-----------------: | :----: | :------: | :-----: | :---------: | :---------: | :------------------------------------------------------: |
-|      id      |  unsigned int(11)   |   √    |    √     |         |             |      √      |                                                          |
-| from_user_id |  unsigned int(11)   |        |          |  NULL   |   user.id   |             |                   为 NULL 则是系统消息                   |
-|  to_user_id  |  unsigned int(11)   |        |    √     |         |   user.id   |             |                                                          |
-|   content    |    varchar(1024)    |        |    √     |         |             |             |             （可选：支持图片、表情、语音等）             |
-|     type     | unsigned tinyint(2) |        |    √     |         |             |             | 消息类型（系统通知、纯文字消息、富文本消息、语音消息等） |
+|    Column    |        Type         | Unique | Not Null | Default  | Foreign Key | Primary Key |                           note                           |
+| :----------: | :-----------------: | :----: | :------: | :------: | :---------: | :---------: | :------------------------------------------------------: |
+|      id      |  unsigned int(11)   |   √    |    √     |          |             |      √      |                                                          |
+| from_user_id |  unsigned int(11)   |        |          |   NULL   |   user.id   |             |                   为 NULL 则是系统消息                   |
+|  to_user_id  |  unsigned int(11)   |        |    √     |          |   user.id   |             |                                                          |
+|   content    |    varchar(1024)    |        |    √     |          |             |             |             （可选：支持图片、表情、语音等）             |
+|     type     | unsigned tinyint(2) |        |    √     |          |             |             | 消息类型（系统通知、纯文字消息、富文本消息、语音消息等） |
+|  is_readed   | unsigned tinyint(2) |        |    √     | UNREADED |             |             |                         是否已读                         |
